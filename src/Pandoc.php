@@ -226,13 +226,14 @@ class Pandoc {
 
     /**
      * @param string $content
+     * @param string $fileExtension
      *
      * @return $this
      * @throws \MichaelDrennen\Pandoc\Exceptions\InputFileDoesNotExist
      * @throws \MichaelDrennen\Pandoc\Exceptions\InputFileIsNotReadable
      */
-    public function content( string $content ) {
-        $tempFromFilePath = tempnam( sys_get_temp_dir(), 'pandocTemp' );
+    public function content( string $content, string $fileExtension = 'txt' ) {
+        $tempFromFilePath = tempnam( sys_get_temp_dir(), 'pandocTemp' ) . '.' . $fileExtension;
         file_put_contents( $tempFromFilePath, $content );
         $this->fromFile( $tempFromFilePath );
 
