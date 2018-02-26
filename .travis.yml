@@ -4,3 +4,5 @@ php:
 install: composer install
 after_success:
   - travis_retry php vendor/bin/coveralls
+before_install:
+  - sudo apt-get install pandoc
